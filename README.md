@@ -280,7 +280,7 @@ cd ziwei-doushu
 # 安装依赖
 npm install
 
-# 配置环境变量（只看排盘可以跳过；AI 配置仅在你自己实现了 /api/* 接口时才用得上）
+# 配置环境变量（只看排盘可以跳过；要用 AI 解读就填 ANTHROPIC_API_KEY）
 cp .env.example .env.local
 
 # 启动开发服务器
@@ -296,7 +296,7 @@ npm test            # 排盘引擎回归（768 盘 × 紫微铁律、夏令时�
 
 每次 push 与 PR 都会在 GitHub Actions 上跑同一套（见 [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)）。
 
-> **注意：开源版不含后端 API 路由。**排盘、命盘展示、合盘起盘都在浏览器里用本仓库的引擎完成，**不需要任何 API Key**。AI 解读（`/api/interpret`）和合盘 AI 分析（`/api/heming`）需要你自己实现接口；没实现之前，这两处会直接提示「开源版不含该接口」，配置 API Key 也不会变成可用（#30 就是这个原因）。
+> **注意：排盘不需要任何 API Key。**排盘、命盘展示、合盘起盘都在浏览器里用本仓库的引擎完成。AI 解读（`/api/interpret`）和合盘 AI 分析（`/api/heming`）附带一份调用 Claude 的**参考实现**（`app/api/`、`lib/ai/`），在 `.env.local` 里填上 `ANTHROPIC_API_KEY` 即可使用；没填时这两处会提示 API 配置有误。参考实现的 prompt 是通用版，不是线上的断语库与 prompt。
 
 ---
 

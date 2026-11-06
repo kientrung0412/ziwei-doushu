@@ -290,7 +290,7 @@ cd ziwei-doushu
 # Cài đặt các gói phụ thuộc
 npm install
 
-# Cấu hình biến môi trường (chỉ xem lá số thì có thể bỏ qua; cấu hình AI chỉ cần khi bạn tự triển khai các API /api/*)
+# Cấu hình biến môi trường (chỉ xem lá số thì có thể bỏ qua; muốn dùng luận giải AI thì điền ANTHROPIC_API_KEY)
 cp .env.example .env.local
 
 # Khởi động máy chủ phát triển
@@ -306,7 +306,7 @@ npm test            # Kiểm thử hồi quy bộ máy lập lá số (768 lá s
 
 Mỗi lần push và PR đều chạy cùng bộ kiểm thử này trên GitHub Actions (xem [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)).
 
-> **Lưu ý: bản mã nguồn mở không có các route API backend.** Lập lá số, hiển thị lá số, lập lá số cho hợp bàn đều được thực hiện trong trình duyệt bằng bộ máy của kho này, **không cần bất kỳ API Key nào**. Luận giải AI (`/api/interpret`) và phân tích AI hợp bàn (`/api/heming`) cần bạn tự triển khai API; trước khi triển khai, hai chỗ này sẽ báo thẳng "bản mã nguồn mở không có API này", và cấu hình API Key cũng không làm chúng dùng được (#30 chính là vì lý do này).
+> **Lưu ý: lập lá số không cần bất kỳ API Key nào.** Lập lá số, hiển thị lá số, lập lá số cho hợp bàn đều được thực hiện trong trình duyệt bằng bộ máy của kho này. Luận giải AI (`/api/interpret`) và phân tích AI hợp bàn (`/api/heming`) có kèm một **bản triển khai tham khảo** gọi Claude (`app/api/`, `lib/ai/`): điền `ANTHROPIC_API_KEY` vào `.env.local` là dùng được; nếu chưa điền, hai chỗ này sẽ báo cấu hình API có lỗi. Prompt của bản tham khảo là prompt chung, không phải thư viện lời đoán và prompt của bản trực tuyến.
 
 ---
 

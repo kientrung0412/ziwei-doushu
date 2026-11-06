@@ -74,7 +74,7 @@ npm run typecheck    # TypeScript check
 npm test             # charting regression tests
 ```
 
-**No API key is needed for charting.** The open-source version contains **no backend routes**: AI interpretation (`/api/interpret`) and compatibility analysis (`/api/heming`) return 404 until you implement them yourself.
+**No API key is needed for charting.** AI interpretation (`/api/interpret`) and compatibility analysis (`/api/heming`) ship as a reference implementation that calls Claude (`app/api/`, `lib/ai/`): set `ANTHROPIC_API_KEY` in `.env.local` to use them. Its prompts are generic, not the production judgment library or prompts.
 
 ## What is not included
 
